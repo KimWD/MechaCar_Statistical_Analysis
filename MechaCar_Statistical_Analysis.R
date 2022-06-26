@@ -26,3 +26,16 @@ head(total_summary)
 lot_summary <- Suspension_df %>% group_by(Manufacturing_Lot) %>% summarize(Mean = mean(PSI), Median = median(PSI), Variance = var(PSI), SD = sd(PSI), .groups = 'keep')
 head(lot_summary)
 
+
+#Deliverable #3
+
+# Peform t-test across all Lots
+t.test(Suspension_df$PSI,mu = 1500)
+
+# Peform t-test on Lot 1
+t.test(subset(Suspension_df,Manufacturing_Lot=="Lot1")$PSI,mu = 1500)
+# Peform t-test on Lot 2
+t.test(subset(Suspension_df,Manufacturing_Lot=="Lot2")$PSI,mu = 1500)
+# Peform t-test on Lot 3
+t.test(subset(Suspension_df,Manufacturing_Lot=="Lot3")$PSI,mu = 1500)
+
