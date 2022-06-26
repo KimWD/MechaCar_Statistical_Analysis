@@ -12,3 +12,17 @@ lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AW
 #perform summary
 summary(lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD,data= MechaCar))
 
+#Deliverable #2
+
+#import & read to df
+Suspension_df <- read.csv(file='Suspension_coil.csv',check.names=F,stringsAsFactors = F)
+head(Suspension)
+
+#summary dataframe
+total_summary <- Suspension_df %>% summarize(Mean = mean(PSI), Median = median(PSI), Variance = var(PSI), SD = sd(PSI))
+head(total_summary)
+
+#create summary of each lot
+lot_summary <- Suspension_df %>% group_by(Manufacturing_Lot) %>% summarize(Mean = mean(PSI), Median = median(PSI), Variance = var(PSI), SD = sd(PSI), .groups = 'keep')
+head(lot_summary)
+
